@@ -42,8 +42,8 @@ public enum ExportType
 
 public static class Exporter
 {
-    private const string _archiveDirectory = "D:\\Games\\Fortnite\\FortniteGame\\Content\\Paks";
-    private const string _aesKey = "0x61D4FD0F3AC7768A08E82A99D275A13762A299FCC28CCF53C46BB221BB90D2B8";
+    private const string _archiveDirectory = "D:\\Roco\\Win64\\NRC\\Content\\Paks";
+    private const string _aesKey = "0x34254D23E47299B3B7F6C4CFDE9BD0688703446D9D8F37B2EBDDDE5B06ED5ADF";
     private const string _mapping = "./++Fortnite+Release-33.20-CL-39082670-Windows_oo.usmap";
 
     private const string _exportDirectory = "./exports";
@@ -57,11 +57,9 @@ public static class Exporter
         ZlibHelper.Initialize();
         OodleHelper.Initialize();
 
-        var version = new VersionContainer(EGame.GAME_UE5_6, ETexturePlatform.DesktopMobile);
+        var version = new VersionContainer(EGame.GAME_RocoKingdomWorld, ETexturePlatform.DesktopMobile);
         var provider = new DefaultFileProvider(_archiveDirectory, SearchOption.TopDirectoryOnly, version)
-        {
-            MappingsContainer = new FileUsmapTypeMappingsProvider(_mapping)
-        };
+            
         provider.Initialize();
         provider.SubmitKey(new FGuid(), new FAesKey(_aesKey));
         provider.PostMount();
